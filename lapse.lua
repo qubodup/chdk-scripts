@@ -240,7 +240,8 @@ start_ticks = get_tick_count()
 
 while endless or frame <= total_frames do
   local free = get_jpg_count() - 1 -- to account for the one we're going to make
-  if free < 0 then
+  local freespace = get_free_disk_space()/1024
+  if freespace < 10 then
     print "Memory full"
     break
   end
